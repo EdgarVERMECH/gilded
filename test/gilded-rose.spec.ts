@@ -1,14 +1,12 @@
 import Shop from '../src/Shop';
 import Item from '../src/Item';
 import { assert } from 'console';
+import GenericItem from '../src/GenericItem';
+import LegendaryItem from '../src/LegendaryItem';
+import AgingItem from '../src/AgingItem';
+import EventItem from '../src/EventItem';
+import ConjuredItem from '../src/ConjuredItem';
 
-/*
-Créer un inventaire pour le shop
-update quality pour le shop et pas pour Item
-méthode update dans Item qui sera appelé dans le shop
-Backstage pass != aged brie
-
-*/
 
 describe('Gilded Rose', () => {
     let shop:Shop;
@@ -16,18 +14,18 @@ describe('Gilded Rose', () => {
     beforeEach(() => {
         let inventory:Item[];
         inventory = [
-            new Item(10,10,"genericItem"),
-            new Item(0,10,"genericItem"),
-            new Item(10,80,"Sulfuras"),
-            new Item(10,0,"genericItem"),
-            new Item(10,10,"Aged Brie"),
-            new Item(10,50,"Aged Brie"),
-            new Item(20,10,"Backstage passes"),
-            new Item(7,10,"Backstage passes"),
-            new Item(2,10,"Backstage passes"),
-            new Item(0,10,"Backstage passes"),
-            new Item(10,10,"Conjured item"),
-            new Item(0,10,"Conjured item")
+            new GenericItem(10,10,"genericItem"),
+            new GenericItem(0,10,"genericItem"),
+            new LegendaryItem(10,80,"Sulfuras"),
+            new GenericItem(10,0,"genericItem"),
+            new AgingItem(10,10,"Aged Brie"),
+            new AgingItem(10,50,"Aged Brie"),
+            new EventItem(20,10,"Backstage passes"),
+            new EventItem(7,10,"Backstage passes"),
+            new EventItem(2,10,"Backstage passes"),
+            new EventItem(0,10,"Backstage passes"),
+            new ConjuredItem(10,10,"Conjured item"),
+            new ConjuredItem(0,10,"Conjured item")
 
 
         ]
@@ -85,7 +83,6 @@ describe('Gilded Rose', () => {
 
     it('Should remove 4 quality to conjured item', () => {
         expect(shop.inventory[11].quality).toBe(6);
-
     });
 
 
