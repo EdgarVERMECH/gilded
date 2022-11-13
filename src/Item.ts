@@ -16,15 +16,20 @@ export default class Item {
     }
 
     updateQuality(){
-        if(this.itemName == "Aged Brie" || this.itemName == "Backstage passes"){
+        if(this.isConjured){
+            this.updateQualityProductConjured();
+        }   
+        else if(this.itemName == "Aged Brie"){
             this.updateQualityForAgedBrie()
+        } else if (this.itemName == "Backstage passes"){
+            this.updateQualityForBackstagePass();
         }
-        else if(this.itemName != "Sulfuras" && this.sellIn > 0){
+        else if(this.itemName != "Sulfuras"){
             this.updateQualityProduct();
         }
-        this.sellIn--;
-        this.displayItemInformation();   
     }
+
+
 
     displayItemInformation(){
         if(this.sellIn>= 0){
@@ -38,7 +43,9 @@ export default class Item {
         }
     }
 
-    updateQualityForAgedBrie(){
+    updateQualityForBackstagePass(){
+        this.sellIn--;
+
         if(this.sellIn > 10){
             this.quality++;
         } else if(this.sellIn > 5){
@@ -52,20 +59,32 @@ export default class Item {
 
     }
 
+    updateQualityForAgedBrie(){
+        this.sellIn--;
+        this.quality++;
+        this.checkQuality();
+
+    }
+
     updateQualityProduct(){
-        if(this.isConjured){
-            if(this.sellIn <0){
-                this.quality -= 4;
-            } else{
-                this.quality-= 2;
-            }
-        } else{
-            if(this.sellIn < 0){
-                this.quality-= 2;
-            }
-            else{
-                this.quality--;
-            }
+        this.sellIn--;
+        if(this.sellIn < 0){
+            this.quality-= 2;
+        }
+        else{
+            this.quality--;
+        }
+
+        this.checkQuality();
+    }
+
+    updateQualityProductConjured(){
+        this.sellIn--;
+        if(this.sellIn < 0){
+            this.quality -= 4;
+        }
+        else{
+            this.quality -= 2;
         }
 
         this.checkQuality();
@@ -92,11 +111,4 @@ export default class Item {
 
 }
 
-let sulfuras = new Item(50,80,"Sulfuras");
-sulfuras.updateQuality();
-let aluneth = new Item(20,40,"Aluneth");
-aluneth.updateQuality();
-let agedBrie = new Item(2,46,"Aged Brie");
-agedBrie.updateQuality();
-agedBrie.updateQuality();
-agedBrie.updateQuality();
+
