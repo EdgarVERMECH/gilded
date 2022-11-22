@@ -3,8 +3,8 @@ import Item from "./Item";
 export default class GenericItem extends Item{
     
 
-    constructor(sellIn:number,quality:number,itemName:string){
-        super(sellIn,quality,itemName);
+    constructor(sellIn:number,quality:number,itemName:string,basePrice:number){
+        super(sellIn,quality,itemName,basePrice);
     }
 
     updateQuality(): void {
