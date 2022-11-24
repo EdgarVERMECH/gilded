@@ -5,7 +5,7 @@ import GenericItem from "./GenericItem";
 import Item from "./Item";
 import ItemRepository from "./ItemRepository";
 import LegendaryItem from "./LegendaryItem";
-import inventoryFile from "./itemRepository.json";
+import inventoryFile from "./itemRepositoryJson.json";
 export default class InFileItemRepository implements ItemRepository{
     
     inventory:Item[] =  []
