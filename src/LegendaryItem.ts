@@ -3,11 +3,9 @@ import Item from "./Item";
 export default class LegendaryItem extends Item{
     
 
-    constructor(sellIn:number,quality:number,itemName:string,basePrice:number){
-        super(sellIn,quality,itemName,basePrice);
+    constructor(quality:number,itemName:string,basePrice:number){
+        super(quality,itemName,basePrice);
     }
-
-    updateQuality(): void {}
 
 
 }

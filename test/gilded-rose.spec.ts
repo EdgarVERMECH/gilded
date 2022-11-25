@@ -10,6 +10,7 @@ import ItemRepository from '../src/ItemRepository';
 import InMemoryItemRepository from './InMemoryItemRepository';
 import SellItemRequest from '../src/SellItemRequest';
 import TestShopOutputBoundary from './TestShopOutputBoundary';
+import PerishableItem from '../src/PerishableItem';
 
 
 describe('Gilded Rose', () => {
@@ -26,7 +27,7 @@ describe('Gilded Rose', () => {
     });
 
     it('Should get sell in', () => {
-        expect(repository.getInventory()[0].sellIn).toBe(9);
+        expect((repository.getInventory()[0] as PerishableItem).sellIn).toBe(9);
     });
 
     it('Should get quality', () => {
@@ -34,12 +35,7 @@ describe('Gilded Rose', () => {
     });
 
     it('Should decrease twice faster', () => {
-        expect(repository.getInventory()[1].quality).toBe(8);
-    });
-
-    it('Should not decrease sell in and quality', () => {
-        expect(repository.getInventory()[2].quality).toBe(80);
-        expect(repository.getInventory()[2].sellIn).toBe(10);
+        expect((repository.getInventory()[1] as PerishableItem).quality).toBe(8);
     });
 
     it('Quality should not go below zero', () => {
@@ -56,7 +52,6 @@ describe('Gilded Rose', () => {
 
     it('Should not update Lengendary Item', () => {
         expect(repository.getInventory()[2].quality).toBe(80);
-        expect(repository.getInventory()[2].sellIn).toBe(10);
     });
 
     it('Should upgrade the quality of Backstage Pass', () => {

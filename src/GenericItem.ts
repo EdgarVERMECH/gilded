@@ -1,6 +1,7 @@
 import Item from "./Item";
+import PerishableItem from "./PerishableItem";
 
-export default class GenericItem extends Item{
+export default class GenericItem extends PerishableItem{
     
 
     constructor(sellIn:number,quality:number,itemName:string,basePrice:number){

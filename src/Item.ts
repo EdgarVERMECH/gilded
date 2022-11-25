@@ -1,18 +1,15 @@
 export default abstract class Item {
-    sellIn:number;
     quality: number;
     itemName: string;
     isConjured:boolean;
     basePrice:number;
-    constructor(sellIn:number,quality:number,itemName:string,basePrice:number){
-        this.sellIn = sellIn;
+    constructor(quality:number,itemName:string,basePrice:number){
+    
         this.itemName = itemName;
         this.isConjured = false;        
         this.quality = this.setQualityForItem(quality);
         this.basePrice = basePrice;
     }
-
-    abstract updateQuality():void;
 
 
     setConjured(isConjured:boolean):void{
