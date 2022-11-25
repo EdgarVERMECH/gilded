@@ -1,10 +1,10 @@
-import AgingItem from "./AgingItem";
-import ConjuredItem from "./ConjuredItem";
-import EventItem from "./EventItem";
-import GenericItem from "./GenericItem";
-import Item from "./Item";
-import ItemRepository from "./ItemRepository";
-import LegendaryItem from "./LegendaryItem";
+import AgingItem from "../src/AgingItem";
+import ConjuredItem from "../src/ConjuredItem";
+import EventItem from "../src/EventItem";
+import GenericItem from "../src/GenericItem";
+import Item from "../src/Item";
+import ItemRepository from "../src/ItemRepository";
+import LegendaryItem from "../src/LegendaryItem";
  
 
 
