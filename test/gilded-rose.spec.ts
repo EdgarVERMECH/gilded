@@ -7,15 +7,19 @@ import AgingItem from '../src/AgingItem';
 import EventItem from '../src/EventItem';
 import ConjuredItem from '../src/ConjuredItem';
 import ItemRepository from '../src/ItemRepository';
-import InMemoryItemRepository from '../src/InMemoryItemRepository';
+import InMemoryItemRepository from './InMemoryItemRepository';
+import SellItemRequest from '../src/SellItemRequest';
+import TestShopOutputBoundary from './TestShopOutputBoundary';
 
 
 describe('Gilded Rose', () => {
     let shop:Shop;
     let repository : ItemRepository;
+    let outputBoundary : TestShopOutputBoundary;
     beforeEach(() => {
-        repository = new InMemoryItemRepository()        
-        shop = new Shop(repository);
+        repository = new InMemoryItemRepository();
+        outputBoundary = new TestShopOutputBoundary();
+        shop = new Shop(repository, outputBoundary);
         repository.getInventory()[10].setConjured(true);
         repository.getInventory()[11].setConjured(true);
         shop.updateQuality();
@@ -50,6 +54,11 @@ describe('Gilded Rose', () => {
         expect(repository.getInventory()[4].quality).toBe(11);
     });
 
+    it('Should not update Lengendary Item', () => {
+        expect(repository.getInventory()[2].quality).toBe(80);
+        expect(repository.getInventory()[2].sellIn).toBe(10);
+    });
+
     it('Should upgrade the quality of Backstage Pass', () => {
         expect(repository.getInventory()[6].quality).toBe(11);
         expect(repository.getInventory()[7].quality).toBe(12);
@@ -78,17 +87,25 @@ describe('Gilded Rose', () => {
 
 
     it('Should sell item', () => {
-        shop.sellItem("Sulfuras",80);
+        shop.sellItem(new SellItemRequest("Sulfuras",80));
         expect(repository.getInventory().length).toBe(11);
         expect(shop.balance).toBe(900);
     });
 
-    
+
     it('Should not sell item that does not exist', () => {
-        expect(function(){shop.sellItem("dfhdfh",80)} ).toThrow(new Error("Item not found"));
+        expect(function(){shop.sellItem(new SellItemRequest("adzad",80))} ).toThrow(new Error("Item not found"));
     });
     
 
+    it('Should display inventory', () => {
+        shop.getInventory();
+        expect(outputBoundary.hasReceivedItems).toBe(true);
+    });
 
+    it('Should display balance', () => {
+        shop.getBalance();
+        expect(outputBoundary.hasReceivedBalance).toBe(true);
+    });
 
 });
