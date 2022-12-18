@@ -1,6 +1,6 @@
-import Item from "./Item";
-import SellItemRequest from "./SellItemRequest";
-import Shop from "./Shop";
+import Item from "../Items/Item";
+import SellItemRequest from "../Boundary/SellItemRequest";
+import Shop from "../Shop";
 
 export default class ConsoleController{
     shop:Shop;

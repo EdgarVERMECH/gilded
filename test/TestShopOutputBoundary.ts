@@ -1,5 +1,5 @@
-import ItemResponse from "../src/ItemResponse";
-import ShopOutputBoundary from "../src/ShopOutputBoundary";
+import ItemResponse from "../src/Boundary/ItemResponse";
+import ShopOutputBoundary from "../src/Boundary/ShopOutputBoundary";
 
 export default class TestShopOutputBoundary implements ShopOutputBoundary{
     public hasReceivedItems: boolean = false;

@@ -1,10 +1,10 @@
-import AgingItem from "./AgingItem";
-import ConjuredItem from "./ConjuredItem";
-import EventItem from "./EventItem";
-import GenericItem from "./GenericItem";
-import Item from "./Item";
+import AgingItem from "../Items/AgingItem";
+import ConjuredItem from "../Items/ConjuredItem";
+import EventItem from "../Items/EventItem";
+import GenericItem from "../Items/GenericItem";
+import Item from "../Items/Item";
 import ItemRepository from "./ItemRepository";
-import LegendaryItem from "./LegendaryItem";
+import LegendaryItem from "../Items/LegendaryItem";
 import inventoryFile from "./itemRepositoryJson.json";
 export default class InFileItemRepository implements ItemRepository{
     

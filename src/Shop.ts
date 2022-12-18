@@ -1,11 +1,12 @@
-import ConjuredItem from "./ConjuredItem";
-import GenericItem from "./GenericItem";
-import Item from "./Item";
-import ItemRepository from "./ItemRepository";
-import ItemResponse from "./ItemResponse";
-import LegendaryItem from "./LegendaryItem";
-import SellItemRequest from "./SellItemRequest";
-import ShopInputBoudary from "./ShopInputBoundary";
+import ConjuredItem from "./Items/ConjuredItem";
+import GenericItem from "./Items/GenericItem";
+import Item from "./Items/Item";
+import ItemRepository from "./Repository/ItemRepository";
+import ItemResponse from "./Boundary/ItemResponse";
+import LegendaryItem from "./Items/LegendaryItem";
+import RelicItem from "./Items/RelicItem";
+import SellItemRequest from "./Boundary/SellItemRequest";
+import ShopInputBoudary from "./Boundary/ShopInputBoundary";
 
 export default class Shop implements ShopInputBoudary {
     
@@ -41,6 +42,9 @@ export default class Shop implements ShopInputBoudary {
     updateQuality():void{
         const items = this.repository.getInventory();
         for(let i = 0; i < items.length; i++){
+            if(items[i] instanceof RelicItem){
+                this.balance += 100;
+            }
             items[i].updateQuality();
         }
         this.repository.saveInventory(items);

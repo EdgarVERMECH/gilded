@@ -1,9 +1,9 @@
 import InMemoryItemRepository from "../test/InMemoryItemRepository";
 import Shop from "./Shop";
-import ConsoleController from "./ConsoleController";
-import ConsoleView from "./ConsoleView";
-import SellItemRequest from "./SellItemRequest";
-import Item from "./Item";
+import ConsoleController from "./Console/ConsoleController";
+import ConsoleView from "./Console/ConsoleView";
+import SellItemRequest from "./Boundary/SellItemRequest";
+import Item from "./Items/Item";
 
 let itemRepository = new InMemoryItemRepository();
 let shop = new Shop(itemRepository);

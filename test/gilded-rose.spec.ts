@@ -1,14 +1,8 @@
 import Shop from '../src/Shop';
-import Item from '../src/Item';
-import { assert } from 'console';
-import GenericItem from '../src/GenericItem';
-import LegendaryItem from '../src/LegendaryItem';
-import AgingItem from '../src/AgingItem';
-import EventItem from '../src/EventItem';
-import ConjuredItem from '../src/ConjuredItem';
-import ItemRepository from '../src/ItemRepository';
+
+import ItemRepository from '../src/Repository/ItemRepository';
 import InMemoryItemRepository from './InMemoryItemRepository';
-import SellItemRequest from '../src/SellItemRequest';
+import SellItemRequest from '../src/Boundary/SellItemRequest';
 import TestShopOutputBoundary from './TestShopOutputBoundary';
 
 
