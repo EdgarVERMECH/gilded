@@ -1,14 +1,8 @@
 import Shop from '../src/Shop';
-import Item from '../src/Item';
-import { assert } from 'console';
-import GenericItem from '../src/GenericItem';
-import LegendaryItem from '../src/LegendaryItem';
-import AgingItem from '../src/AgingItem';
-import EventItem from '../src/EventItem';
-import ConjuredItem from '../src/ConjuredItem';
-import ItemRepository from '../src/ItemRepository';
+
+import ItemRepository from '../src/Repository/ItemRepository';
 import InMemoryItemRepository from './InMemoryItemRepository';
-import SellItemRequest from '../src/SellItemRequest';
+import SellItemRequest from '../src/Boundary/SellItemRequest';
 import TestShopOutputBoundary from './TestShopOutputBoundary';
 
 
@@ -19,9 +13,7 @@ describe('Gilded Rose', () => {
     beforeEach(() => {
         repository = new InMemoryItemRepository();
         outputBoundary = new TestShopOutputBoundary();
-        shop = new Shop(repository, outputBoundary);
-        repository.getInventory()[10].setConjured(true);
-        repository.getInventory()[11].setConjured(true);
+        shop = new Shop(repository);
         shop.updateQuality();
     });
 
@@ -88,8 +80,7 @@ describe('Gilded Rose', () => {
 
     it('Should sell item', () => {
         shop.sellItem(new SellItemRequest("Sulfuras",80));
-        expect(repository.getInventory().length).toBe(11);
-        expect(shop.balance).toBe(900);
+        expect(shop.balance).toBe(1000);
     });
 
 
@@ -98,14 +89,6 @@ describe('Gilded Rose', () => {
     });
     
 
-    it('Should display inventory', () => {
-        shop.getInventory();
-        expect(outputBoundary.hasReceivedItems).toBe(true);
-    });
-
-    it('Should display balance', () => {
-        shop.getBalance();
-        expect(outputBoundary.hasReceivedBalance).toBe(true);
-    });
+    
 
 });

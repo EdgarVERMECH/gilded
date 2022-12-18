@@ -42,6 +42,10 @@ export default abstract class Item {
         return this.basePrice + this.quality * 10;
     }
 
+    setPrice(price : number):void{
+        this.basePrice = price;
+    }
+
 
 }
 
