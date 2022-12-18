@@ -19,9 +19,7 @@ describe('Gilded Rose', () => {
     beforeEach(() => {
         repository = new InMemoryItemRepository();
         outputBoundary = new TestShopOutputBoundary();
-        shop = new Shop(repository, outputBoundary);
-        repository.getInventory()[10].setConjured(true);
-        repository.getInventory()[11].setConjured(true);
+        shop = new Shop(repository);
         shop.updateQuality();
     });
 
@@ -98,14 +96,6 @@ describe('Gilded Rose', () => {
     });
     
 
-    it('Should display inventory', () => {
-        shop.getInventory();
-        expect(outputBoundary.hasReceivedItems).toBe(true);
-    });
-
-    it('Should display balance', () => {
-        shop.getBalance();
-        expect(outputBoundary.hasReceivedBalance).toBe(true);
-    });
+    
 
 });

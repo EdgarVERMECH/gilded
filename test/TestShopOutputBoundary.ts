@@ -1,7 +1,7 @@
 import ItemResponse from "../src/ItemResponse";
 import ShopOutputBoundary from "../src/ShopOutputBoundary";
 
-export default class VirtualShopOutputBoundary implements ShopOutputBoundary{
+export default class TestShopOutputBoundary implements ShopOutputBoundary{
     public hasReceivedItems: boolean = false;
     public hasReceivedBalance : boolean = false;
 

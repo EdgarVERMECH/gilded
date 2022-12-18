@@ -11,17 +11,17 @@ import LegendaryItem from "../src/LegendaryItem";
 export default class InMemoryItemRepository implements ItemRepository{
     
     inventory:Item[] =  [
-        new GenericItem(10,10,"genericItem",100),
-        new GenericItem(0,10,"genericItem",100),
-        new LegendaryItem(10,80,"Sulfuras",100),
-        new GenericItem(10,0,"genericItem",100),
+        new GenericItem(10,10,"genericItem",100,0,40),
+        new GenericItem(0,10,"genericItem",100,30),
+        new LegendaryItem(10,80,"Sulfuras",900,80,30),
+        new GenericItem(10,0,"genericItem",100,8),
         new AgingItem(10,10,"Aged Brie",100),
         new AgingItem(10,50,"Aged Brie",100),
         new EventItem(20,10,"Backstage passes",100),
         new EventItem(7,10,"Backstage passes",100),
         new EventItem(2,10,"Backstage passes",100),
         new EventItem(0,10,"Backstage passes",100),
-        new ConjuredItem(10,10,"Conjured item",100),
+        new ConjuredItem(10,10,"Conjured item",100,30,20),
         new ConjuredItem(0,10,"Conjured item",100)
     ]
     

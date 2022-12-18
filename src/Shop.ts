@@ -1,35 +1,42 @@
-import InFileItemRepository from "./InFileItemRepository";
+import ConjuredItem from "./ConjuredItem";
+import GenericItem from "./GenericItem";
 import Item from "./Item";
 import ItemRepository from "./ItemRepository";
 import ItemResponse from "./ItemResponse";
+import LegendaryItem from "./LegendaryItem";
 import SellItemRequest from "./SellItemRequest";
 import ShopInputBoudary from "./ShopInputBoundary";
-import ShopOutputBoundary from "./ShopOutputBoundary";
 
 export default class Shop implements ShopInputBoudary {
     
     repository:ItemRepository;
     balance: number = 0;
-    outputBoundary:ShopOutputBoundary;
-    constructor(repository:ItemRepository, outputBoundary:ShopOutputBoundary){
+    // outputBoundary:ShopOutputBoundary;
+    constructor(repository:ItemRepository){
         this.repository = repository;
         this.balance;
-        this.outputBoundary = outputBoundary;
+        // this.outputBoundary = new ConsoleView(this);
     }
 
     getInventory(){
         let items = this.repository.getInventory()
         let responses:ItemResponse[] = [];
         for(let i = 0; i < items.length;i++){
-            responses.push(new ItemResponse(items[i].sellIn,items[i].quality,items[i].getArticleValue(),items[i].itemName));
+            if(items[i] instanceof GenericItem || items[i] instanceof LegendaryItem || items[i] instanceof ConjuredItem){
+                responses.push(new ItemResponse(items[i].sellIn,items[i].quality,items[i].getArticleValue(),items[i].itemName,(items[i] as GenericItem).attack,(items[i] as GenericItem).defense));
+            } else{
+                responses.push(new ItemResponse(items[i].sellIn,items[i].quality,items[i].getArticleValue(),items[i].itemName));
+            }
         }
-        
-        this.outputBoundary.displayInventory(responses);
+        return responses;
     }
 
-    getBalance():void{
-        this.outputBoundary.displayBalance(this.balance);
+    getBalance(){
+        return this.balance;
     }
+    // getBalance():void{
+    //     this.outputBoundary.displayBalance(this.balance);
+    // }
 
     updateQuality():void{
         const items = this.repository.getInventory();
@@ -51,11 +58,12 @@ export default class Shop implements ShopInputBoudary {
         
     }
 
-    // updateShopValue():number{
-    //     /*for(let i = 0; i < this.inventory.length;i++){
-    //         this.solde += this.inventory[i].getArticleValue();
-    //     }
-    //     return this.solde; */
+    itemExist(item:SellItemRequest):Item{
+        return this.repository.findItem(item.name,item.quality);
+        
+    }
 
-    // }
+    setPrice(item:SellItemRequest,price:number){
+        this.repository.findItem(item.name,item.quality).setPrice(price);
+    }
 }
