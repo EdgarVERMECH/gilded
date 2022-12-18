@@ -101,8 +101,8 @@ function auction():void{
     let newPrice;
     try{
         let item = consoleController.itemExist(itemToAuction);
-        price = item.basePrice /2;
-        console.log("The item is estimated to ",item.basePrice);
+        price = item.getArticleValue() /2;
+        console.log("The item is estimated to ",item.getArticleValue());
         console.log("The starting price is "+price+" golds");
         while(cptAuction < 3){
             newPrice = +prompt("What is your new bid ?");
@@ -127,9 +127,10 @@ function auction():void{
             }
             
         } 
+        console.log("You successfully bought the item for "+price+" golds");
+        price -= item.quality*10;
         shop.setPrice(itemToAuction,price)
         shop.sellItem(itemToAuction);
-        console.log("You successfully bought the item for "+price+" golds");
     } catch{
         console.log("Sorry, this item is not available for sell")
     }

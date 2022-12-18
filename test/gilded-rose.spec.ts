@@ -80,8 +80,7 @@ describe('Gilded Rose', () => {
 
     it('Should sell item', () => {
         shop.sellItem(new SellItemRequest("Sulfuras",80));
-        expect(repository.getInventory().length).toBe(11);
-        expect(shop.balance).toBe(900);
+        expect(shop.balance).toBe(1000);
     });
 
 

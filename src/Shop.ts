@@ -55,7 +55,7 @@ export default class Shop implements ShopInputBoudary {
         let item : Item;
         item = this.repository.findItem(itemToSell.name,itemToSell.quality);
         this.balance += item.getArticleValue();
-
+        console.log("sold ; ",item.getArticleValue())
         const items = this.repository.getInventory()
         items.splice(this.repository.getInventory().indexOf(item),1);
         this.repository.saveInventory(items)

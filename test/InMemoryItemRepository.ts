@@ -14,7 +14,7 @@ export default class InMemoryItemRepository implements ItemRepository{
     inventory:Item[] =  [
         new GenericItem(10,10,"genericItem",100,0,40),
         new GenericItem(0,10,"genericItem",100,30),
-        new LegendaryItem(10,80,"Sulfuras",900,80,30),
+        new LegendaryItem(10,80,"Sulfuras",100,80,30),
         new GenericItem(10,0,"genericItem",100,8),
         new AgingItem(10,10,"Aged Brie",100),
         new AgingItem(10,50,"Aged Brie",100),
