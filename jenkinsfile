@@ -21,7 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'test n3'
-
+                sh 'rm jest.config.js'
                 sh 'npm test'
             }
         }
