@@ -12,10 +12,10 @@ pipeline {
             steps {
                 echo 'test n2'
 
-                bat 'npm install'
+                sh 'sudo npm install'
                 echo 'test n2'
 
-                sh 'npm run build'
+                sh 'sudo npm run build'
             }
         }
         stage('Test') {
