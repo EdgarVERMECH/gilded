@@ -11,11 +11,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'test n2'
-
-                sh 'sudo npm install'
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh 'npm install'
                 echo 'test n2'
 
-                sh 'sudo npm run build'
+                sh 'npm run build'
             }
         }
         stage('Test') {
