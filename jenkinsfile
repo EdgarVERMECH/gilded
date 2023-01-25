@@ -3,22 +3,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'test n1'
                 git 'https://github.com/EdgarVERMECH/gilded.git'
             }
         }
         stage('Build') {
             steps {
+                echo 'test n2'
+
                 sh 'npm install'
+                echo 'test n2'
+
                 sh 'npm run build'
             }
         }
         stage('Test') {
             steps {
+                echo 'test n3'
+
                 sh 'npm test'
             }
         }
         stage('Packaging') {
             steps {
+                echo 'test n4'
+
                 sh 'npm pack'
             }
         }
