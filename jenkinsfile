@@ -26,10 +26,6 @@ pipeline {
                 sh 'npm pack'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'npm run deploy'
-            }
-        }
+        
     }
 }
