@@ -5,6 +5,9 @@ pipeline {
             steps {
                 echo 'test n1'
                 git 'https://github.com/EdgarVERMECH/gilded.git'
+                echo 'test n1.1'
+
+
             }
         }
         stage('Build') {
