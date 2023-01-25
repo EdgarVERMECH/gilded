@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        // stage('Checkout') {
+        //     steps {
+        //         echo 'test n1'
+        //         git 'https://github.com/EdgarVERMECH/gilded.git'
+        //         echo 'test n1.1'
+        //     }
+        // }
+        stage('Build') {
+            steps {
+                echo 'test n2'
+                bat 'npm install'
+                echo 'test n2'
+
+                bat 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'test n3'
+                bat 'rm jest.config.js'
+                bat 'npm test'
+            }
+        }
+        stage('Packaging') {
+            steps {
+                echo 'test n4'
+
+                bat 'npm pack'
+            }
+        }
+        
+    }
+}
