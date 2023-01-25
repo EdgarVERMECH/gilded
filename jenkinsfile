@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'test n2'
 
-                sh 'npm install'
+                bat 'npm install'
                 echo 'test n2'
 
                 sh 'npm run build'
