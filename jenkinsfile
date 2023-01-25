@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+        node {
+            label 'node'
+        }
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your_repo/your_project.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Packaging') {
+            steps {
+                sh 'npm pack'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'npm run deploy'
+            }
+        }
+    }
+}
