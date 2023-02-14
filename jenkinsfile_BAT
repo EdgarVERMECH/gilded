@@ -21,6 +21,8 @@ pipeline {
             steps {
                 echo 'test n3'
                 bat 'rm jest.config.js'
+                echo 'Tests statiques :'
+                bat 'npm run flow'
                 bat 'npm test'
             }
         }
