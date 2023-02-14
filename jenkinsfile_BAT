@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        NEXUS_REPO = "http://localhost:8082/repository/gilded_repo/"
+        NEXUS_CRED_ID = "Test_Nexus_ID"
+        ARTIFACT_NAME = "gilded-rose-kata-1.0.0.tgz"
+    }
     stages {
         // stage('Checkout') {
         //     steps {
@@ -33,6 +38,14 @@ pipeline {
                 bat 'npm pack'
             }
         }
+        stage('Publish') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        bat "curl -v -u $USERNAME:$PASSWORD --upload-file ./dist/${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
+                    }
+                }
+            }
         
     }
 }
