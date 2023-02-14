@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        bat "curl -v -u $USERNAME:$PASSWORD --upload-file ./dist/${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
+                        bat "curl -v -u $USERNAME:$PASSWORD --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
                     }
                 }
             }
