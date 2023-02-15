@@ -43,8 +43,8 @@ pipeline {
                     //withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         //bat "curl -v -u $USERNAME:$PASSWORD -F "gilded-rose-kata-1.0.0.tgz" --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
                     //    bat 'npm publish'
-                    nexusPublisher nexusInstanceId: 'Test_Nexus_ID',
-                    nexusRepositoryId: 'http://localhost:8082/repository/gilded_repo/',
+                    nexusPublisher nexusInstanceId: 'Nexus_ID',
+                    nexusRepositoryId: 'gilded_repo',
                     packages: [[$class: 'gilded-rose-kata-1.0.0.tgz', packageJson: './package.json']]
                     
                 }
