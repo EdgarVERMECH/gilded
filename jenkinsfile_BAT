@@ -46,7 +46,7 @@ pipeline {
                     bat 'dir'
                     nexusPublisher nexusInstanceId: 'Nexus_ID',
                         nexusRepositoryId: 'gilded_repo',
-                        packages: [[$class: 'tgz', packageJson: 'package.json', packageFile: '*.tgz']]
+                        packages: [[$class: 'NpmPackage', packageJson: 'package.json', packageFile: '*.tgz']]
                     
                 }
             }
