@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        bat "curl -v -u $USERNAME:$PASSWORD -F "npm.asset=@./gilded-rose-kata-1.0.0.tgz " --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
+                        bat "curl -v -u $USERNAME:$PASSWORD -F "gilded-rose-kata-1.0.0.tgz" --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
                     }
                 }
             }
