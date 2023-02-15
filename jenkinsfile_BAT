@@ -51,7 +51,7 @@ pipeline {
                 //}
                 nexusArtifactUploader(
                     nexusUrl: 'http://localhost:8082/',
-                    repository: 'gilded_repo',
+                    repository: 'http://localhost:8082/repository/gilded_repo/',
                     credentialsId: 'Test_Nexus_ID',
                     version: '1.0.0',
                     artifacts: [
