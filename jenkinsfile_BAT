@@ -44,8 +44,8 @@ pipeline {
                         //bat "curl -v -u $USERNAME:$PASSWORD -F "gilded-rose-kata-1.0.0.tgz" --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
                     //    bat 'npm publish'
                     nexusPublisher nexusInstanceId: 'Nexus_ID',
-                    nexusRepositoryId: 'gilded_repo',
-                    packages: [[$class: './src/index.ts', packageJson: './package.json']]
+                        nexusRepositoryId: 'gilded_repo',
+                        packages: [[$class: 'index.ts', packageJson: './package.json']]
                     
                 }
             }
