@@ -39,26 +39,28 @@ pipeline {
         }
         stage('Publish') {
             steps {
-                //script {
+                script {
                     //withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         //bat "curl -v -u $USERNAME:$PASSWORD -F "gilded-rose-kata-1.0.0.tgz" --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
                     //    bat 'npm publish'
+                    
                     //bat 'dir'
-                    //nexusPublisher nexusInstanceId: 'Nexus_ID',
-                    //    nexusRepositoryId: 'gilded_repo',
-                    //    packages: [[$class: 'NpmPackage', packageJson: 'package.json', packageFile: '*.tgz']]
-                    //[$class: 'ArtifactUploader', file: 'gilded-rose-kata-1.0.0.tgz', s3Bucket: 'my-s3-bucket', s3CredentialsConfig: 'my-s3-creds']
-                //}
-                nexusArtifactUploader(
-                    nexusUrl: 'http://localhost:8082/',
-                    repository: 'http://localhost:8082/repository/gilded_repo/',
-                    credentialsId: 'Test_Nexus_ID',
-                    groupId: 'test',
-                    version: '1.0.0',
-                    artifacts: [
-                         [artifactId: 'gilderose', type: 'tgz', file: './gilded-rose-kata-1.0.0.tgz'],
-                         ]
-                    )
+                    
+                    nexusPublisher nexusInstanceId: 'Nexus_ID',
+                        nexusRepositoryId: 'gilded_repo',
+                        packages: [[$class: 'NpmPackage', packageJson: 'package.json', packageFile: '*.tgz']]
+                    
+                }
+                //nexusArtifactUploader(
+                  //  nexusUrl: 'http://localhost:8082/',
+                    //repository: 'http://localhost:8082/repository/gilded_repo/',
+                    //credentialsId: 'Test_Nexus_ID',
+                    //groupId: 'test',
+                    //version: '1.0.0',
+                    //artifacts: [
+                    //     [artifactId: 'gilderose', type: 'tgz', file: './gilded-rose-kata-1.0.0.tgz'],
+                    //     ]
+                    //)
             }
         }
     }
