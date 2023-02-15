@@ -45,6 +45,7 @@ pipeline {
                     //    bat 'npm publish'
                     nexusPublisher nexusInstanceId: 'Nexus_ID',
                         nexusRepositoryId: 'gilded_repo',
+                        bat 'dir'
                         packages: [[$class: 'index.ts', packageJson: './package.json']]
                     
                 }
