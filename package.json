@@ -22,5 +22,8 @@
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "publishConfig": {
+    "registry": "http://localhost:8082/repository/gilded_repo/"
+}
 }
