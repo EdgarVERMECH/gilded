@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         NEXUS_REPO = "http://localhost:8082/repository/gilded_repo/"
-        NEXUS_CRED_ID = "Test_Nexus_ID"
+        NEXUS_CRED= "NpmToken.dda25bdf-7e4e-3db9-9bdf-fccb7dbbe48e"
         ARTIFACT_NAME = "gilded-rose-kata-1.0.0.tgz"
     }
     stages {
@@ -39,6 +39,9 @@ pipeline {
         }
         stage('Publish') {
             steps {
+                bat 'npm config set registry ${NEXUS_REPO}'
+                bat 'npm config set //${NEXUS_REPO}:_authToken=${NEXUS_CRED}'
+                bat 'npm publish'
                 //script {
                     //withCredentials([usernamePassword(credentialsId: "${NEXUS_CRED_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         //bat "curl -v -u $USERNAME:$PASSWORD -F "gilded-rose-kata-1.0.0.tgz" --upload-file ./${ARTIFACT_NAME} ${NEXUS_REPO}/${ARTIFACT_NAME}"
@@ -51,21 +54,21 @@ pipeline {
                       //  packages: [[$class: 'NpmPackage', packageJson: 'package.json', packageFile: '*.tgz']]
                     
                 //}
-                 nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: 'localhost:8082',
-                    groupId: 'GILDED',
-                    version: '1.0.0',
-                    repository: 'gilded_repo',
-                    credentialsId: 'admin',
-                    artifacts: [
-                        [artifactId: 'gilded-rose-kata',
-                        classifier: '',
-                        file: 'gilded-rose-kata-1.0.0.tgz',
-                        type: 'tgz']
-                    ]
-                 )
+                // nexusArtifactUploader(
+                 //   nexusVersion: 'nexus3',
+                //     protocol: 'http',
+                //     nexusUrl: 'localhost:8082',
+                //     groupId: 'GILDED',
+                //     version: '1.0.0',
+                //     repository: 'gilded_repo',
+                //     credentialsId: 'admin',
+                //     artifacts: [
+                //         [artifactId: 'gilded-rose-kata',
+                //         classifier: '',
+                //         file: 'gilded-rose-kata-1.0.0.tgz',
+                //         type: 'tgz']
+                //     ]
+                //  )
                 //nexusArtifactUploader(
                   //  nexusUrl: 'http://localhost:8082/',
                     //repository: 'http://localhost:8082/repository/gilded_repo/',
