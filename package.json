@@ -2,6 +2,9 @@
   "name": "gilded-rose-kata",
   "version": "1.0.0",
   "description": "Gilded Rose kata in TypeScript",
+  "publishConfig": {
+    "registry": "http://localhost:8082/repository/gilded_repo/"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
@@ -22,8 +25,5 @@
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"
-  },
-  "publishConfig": {
-    "registry": "http://localhost:8082/repository/gilded_repo/"
-}
+  }
 }
