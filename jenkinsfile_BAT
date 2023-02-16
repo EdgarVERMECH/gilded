@@ -57,7 +57,7 @@ pipeline {
                     nexusUrl: 'http://localhost:8082/',
                     groupId: 'GILDED',
                     version: '1.0.0',
-                    repository: 'http://localhost:8082/repository/gilded_repo/',
+                    repository: 'gilded_repo',
                     credentialsId: 'Test_Nexus_ID',
                     artifacts: [
                         [artifactId: 'gilded-rose-kata',
