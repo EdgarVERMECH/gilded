@@ -58,7 +58,7 @@ pipeline {
                     groupId: 'GILDED',
                     version: '1.0.0',
                     repository: 'gilded_repo',
-                    credentialsId: 'Test_Nexus_ID',
+                    credentialsId: 'admin',
                     artifacts: [
                         [artifactId: 'gilded-rose-kata',
                         classifier: '',
