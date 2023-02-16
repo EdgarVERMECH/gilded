@@ -62,7 +62,7 @@ pipeline {
                     artifacts: [
                         [artifactId: 'gilded-rose-kata',
                         classifier: '',
-                        file: 'gilded-rose-kata-' + version + '.tgz',
+                        file: 'gilded-rose-kata-1.0.0.tgz',
                         type: 'tgz']
                     ]
                  )
