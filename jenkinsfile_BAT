@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        NEXUS_REPO = "http://localhost:8082/repository/gilded_repo/"
+        NEXUS_CRED= "NpmToken.dda25bdf-7e4e-3db9-9bdf-fccb7dbbe48e"
+        ARTIFACT_NAME = "gilded-rose-kata-1.0.0.tgz"
+    }
     stages {
         // stage('Checkout') {
         //     steps {
@@ -29,10 +34,15 @@ pipeline {
         stage('Packaging') {
             steps {
                 echo 'test n4'
-
                 bat 'npm pack'
             }
         }
-        
+        stage('Publish') {
+            steps {
+                bat 'npm config set registry ${NEXUS_REPO}'
+                bat 'npm config set //${NEXUS_REPO}:_authToken=${NEXUS_CRED}'
+                bat 'npm publish'
+                }
+        }
     }
 }

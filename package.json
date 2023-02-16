@@ -2,13 +2,16 @@
   "name": "gilded-rose-kata",
   "version": "1.0.0",
   "description": "Gilded Rose kata in TypeScript",
+  "publishConfig": {
+    "registry": "http://localhost:8082/repository/gilded_repo/"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "flow":"flow"
   },
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
