@@ -55,7 +55,7 @@ pipeline {
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     nexusUrl: 'http://localhost:8082/',
-                    groupId: 'com.example',
+                    groupId: 'GILDED',
                     version: '1.0.0',
                     repository: 'http://localhost:8082/repository/gilded_repo/',
                     credentialsId: 'Test_Nexus_ID',
