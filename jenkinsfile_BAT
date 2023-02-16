@@ -60,7 +60,7 @@ pipeline {
                     repository: 'http://localhost:8082/repository/gilded_repo/',
                     credentialsId: 'Test_Nexus_ID',
                     artifacts: [
-                        [artifactId: projectName,
+                        [artifactId: 'gilded-rose-kata',
                         classifier: '',
                         file: 'gilded-rose-kata-' + version + '.tgz',
                         type: 'tgz']
